@@ -507,6 +507,10 @@ footer{
     right: 0;
 }
 
+.footerlogos a{
+    font-size: 18pt;
+}
+
 .footerbottom{
     text-align: center;
 }
