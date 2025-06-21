@@ -78,3 +78,31 @@ document.addEventListener('click', function () {
         }, 500);
     }
 });
+
+const boxes = document.querySelectorAll('.box');
+
+// INTERSECTION OBSERVER FOR .box AND .skilldescrip
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target); // optional if one-time reveal
+        }
+    });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.box, .skilldescrip').forEach(el => observer.observe(el));
+
+  
+  // TEXT ANIMATION FOR .skilldescrip
+  document.querySelectorAll('.skilldescrip').forEach((el) => {
+    const text = el.dataset.text || el.textContent.trim();  // use data-text if available
+    el.textContent = ''; // Clear original
+  
+    [...text].forEach((char, i) => {
+      const span = document.createElement('span');
+      span.textContent = char;
+      span.style.animationDelay = `${i * 0.02}s`; // Delay each character
+      el.appendChild(span);
+    });
+  });
