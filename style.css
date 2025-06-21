@@ -264,6 +264,7 @@ nav {
     color: aliceblue;
     font-style: italic;
     padding: 20px;
+    white-space: pre-wrap; white-space: pre-wrap; 
 }
 
 .skillhead{
@@ -673,3 +674,49 @@ footer{
         margin-left: 3%;
     }
 }
+
+.box {
+    opacity: 0;
+    transform: translateY(0); /* default */
+    transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+  }
+  
+
+/* Slide-ins (big motion) */
+.toright { transform: translateX(100px); }
+.toleft  { transform: translateX(-100px); }
+.toup    { transform: translateY(-100px); }
+.todown  { transform: translateY(100px); }
+
+/* Reveal-ins (subtle fade-in + slight shift) */
+.torightreveal { transform: translateX(20px); }
+.toleftreveal  { transform: translateX(-20px); }
+.toupreveal    { transform: translateY(-20px); }
+.todownreveal  { transform: translateY(20px); }
+
+
+/* Final visible state */
+.box.visible {
+  opacity: 1;
+  transform: translateX(0) translateY(0);
+}
+
+
+  .skilldescrip span {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeInLetter 0.4s forwards;
+  }
+  
+  @keyframes fadeInLetter {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+
+.skilldescrip.visible {
+    opacity: 1;
+  }
